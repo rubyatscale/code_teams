@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    teams (1.11.0)
+    bigrails-teams (0.1.0)
       sorbet-runtime
 
 GEM
@@ -29,7 +29,7 @@ GEM
     rspec-support (3.10.2)
     sorbet (0.5.9889)
       sorbet-static (= 0.5.9889)
-    sorbet-runtime (0.5.9889)
+    sorbet-runtime (0.5.9976)
     sorbet-static (0.5.9889-universal-darwin-14)
     sorbet-static (0.5.9889-universal-darwin-15)
     sorbet-static (0.5.9889-universal-darwin-16)
@@ -47,11 +47,11 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  bigrails-teams!
   pry
   rake
   rspec (~> 3.0)
   sorbet
-  teams!
 
 BUNDLED WITH
    2.3.9

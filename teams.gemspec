@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'teams'
-  spec.version       = '1.11.0'
+  spec.name          = 'bigrails-teams'
+  spec.version       = '0.1.0'
   spec.authors       = ['Gusto Engineers']
   spec.email         = ['dev@gusto.com']
   spec.summary       = 'A low-dependency gem for declaring and querying engineering teams'
