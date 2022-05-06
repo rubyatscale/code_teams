@@ -1,1 +1,1 @@
-See https://github.com/bigrails/teams/releases
+See https://github.com/bigrails/bigrails-teams/releases
