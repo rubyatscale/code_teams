@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bigrails-teams (0.1.0)
+    bigrails-teams (0.1.1)
       sorbet-runtime
 
 GEM
