@@ -53,7 +53,7 @@ After adding the proper GitHub information to the team YML:
 ```yml
 name: My Team
 github:
-  team: '@org/my-team
+  team: '@org/my-team'
   members:
     - member1
     - member2
