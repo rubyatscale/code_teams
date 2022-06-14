@@ -5,13 +5,13 @@ Gem::Specification.new do |spec|
   spec.email         = ['dev@gusto.com']
   spec.summary       = 'A low-dependency gem for declaring and querying engineering teams'
   spec.description = 'A low-dependency gem for declaring and querying engineering teams'
-  spec.homepage      = 'https://github.com/bigrails/bigrails-teams'
+  spec.homepage      = 'https://github.com/rubyatscale/bigrails-teams'
   spec.license       = 'MIT'
 
   if spec.respond_to?(:metadata)
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://github.com/bigrails/bigrails-teams'
-    spec.metadata['changelog_uri'] = 'https://github.com/bigrails/bigrails-teams/releases'
+    spec.metadata['source_code_uri'] = 'https://github.com/rubyatscale/bigrails-teams'
+    spec.metadata['changelog_uri'] = 'https://github.com/rubyatscale/bigrails-teams/releases'
     spec.metadata['allowed_push_host'] = 'https://rubygems.org'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
