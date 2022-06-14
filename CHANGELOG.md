@@ -1,1 +1,1 @@
-See https://github.com/rubyatscale/bigrails-teams/releases
+See https://github.com/rubyatscale/code_teams/releases
