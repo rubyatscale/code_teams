@@ -6,10 +6,10 @@ require 'yaml'
 require 'set'
 require 'pathname'
 require 'sorbet-runtime'
-require 'teams/plugin'
-require 'teams/plugins/identity'
+require 'code_teams/plugin'
+require 'code_teams/plugins/identity'
 
-module Teams
+module CodeTeams
   extend T::Sig
 
   class IncorrectPublicApiUsageError < StandardError; end
@@ -24,7 +24,7 @@ module Teams
 
   sig { params(name: String).returns(T.nilable(Team)) }
   def self.find(name)
-    @index_by_name = T.let(@index_by_name, T.nilable(T::Hash[String, Teams::Team]))
+    @index_by_name = T.let(@index_by_name, T.nilable(T::Hash[String, CodeTeams::Team]))
     @index_by_name ||= begin
       result = {}
       all.each { |t| result[t.name] = t }
@@ -57,7 +57,7 @@ module Teams
 
   # Generally, you should not ever need to do this, because once your ruby process loads, cached content should not change.
   # Namely, the YML files that are the source of truth for teams should not change, so we should not need to look at the YMLs again to verify.
-  # The primary reason this is helpful is for clients of Teams who want to test their code, and each test context has different set of teams
+  # The primary reason this is helpful is for clients of CodeTeams who want to test their code, and each test context has different set of teams
   sig { void }
   def self.bust_caches!
     @all = nil
@@ -109,12 +109,12 @@ module Teams
 
     sig { returns(String) }
     def to_tag
-      Teams.tag_value_for(name)
+      CodeTeams.tag_value_for(name)
     end
 
     sig { params(other: Object).returns(T::Boolean) }
     def ==(other)
-      if other.is_a?(Teams::Team)
+      if other.is_a?(CodeTeams::Team)
         self.name == other.name
       else
         false

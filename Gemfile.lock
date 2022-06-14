@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    bigrails-teams (0.1.1)
+    code_teams (1.0.0)
       sorbet-runtime
 
 GEM
@@ -47,7 +47,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  bigrails-teams!
+  code_teams!
   pry
   rake
   rspec (~> 3.0)

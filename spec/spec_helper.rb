@@ -1,6 +1,6 @@
 require 'bundler/setup'
 require 'pry'
-require 'teams'
+require 'code_teams'
 
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure

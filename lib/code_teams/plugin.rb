@@ -1,6 +1,6 @@
 # typed: strict
 
-module Teams
+module CodeTeams
   # Plugins allow a client to add validation on custom keys in the team YML.
   # For now, only a single plugin is allowed to manage validation on a top-level key.
   # In the future we can think of allowing plugins to be gracefully merged with each other.
