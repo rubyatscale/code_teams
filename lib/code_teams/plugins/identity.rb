@@ -1,6 +1,6 @@
 # typed: true
 
-module Teams
+module CodeTeams
   module Plugins
     class Identity < Plugin
       extend T::Sig
@@ -15,7 +15,7 @@ module Teams
         )
       end
 
-      sig { override.params(teams: T::Array[Teams::Team]).returns(T::Array[String]) }
+      sig { override.params(teams: T::Array[CodeTeams::Team]).returns(T::Array[String]) }
       def self.validation_errors(teams)
         errors = T.let([], T::Array[String])
 

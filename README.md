@@ -1,19 +1,19 @@
-# Teams
+# CodeTeams
 
-This gem is a simple, low-dependency, plugin-based manager for engineering teams within a codebase.
+This gem is a simple, low-dependency, plugin-based manager for teams within a codebase.
 
 ## Usage
 
-To use teams, add YML files in `config/teams` that start with structure:
+To use `code_teams`, add YML files in `config/teams` that start with structure:
 `config/teams/my_team.yml`
 ```yml
 name: My Team
 ```
 
-`teams` leverages a plugin system because every organization's team practices are different. Say your organization uses GitHub and wants to ensure every team YML files has a GitHub owner. To do this, you create a plugin:
+`code_teams` leverages a plugin system because every organization's team practices are different. Say your organization uses GitHub and wants to ensure every team YML files has a GitHub owner. To do this, you create a plugin:
 
 ```ruby
-class MyGithubPlugin < Teams::Plugin
+class MyGithubPlugin < CodeTeams::Plugin
   extend T::Sig
   extend T::Helpers
 
@@ -36,7 +36,7 @@ class MyGithubPlugin < Teams::Plugin
     members.include?(user)
   end
 
-  sig { override.params(teams: T::Array[Teams::Team]).returns(T::Array[String]) }
+  sig { override.params(teams: T::Array[CodeTeams::Team]).returns(T::Array[String]) }
   def self.validation_errors(teams)
     errors = T.let([], T::Array[String])
 
@@ -61,7 +61,7 @@ github:
 
 1) You can now use the following API to get GitHub information about that team:
 ```ruby
-team = Teams.find('My Team')
+team = CodeTeams.find('My Team')
 MyGithubPlugin.for(team).github
 ```
 2) Running team validations (see below) will ensure all teams have a GitHub team specified
@@ -76,8 +76,8 @@ Your plugins can be as simple or as complex as you want. Here are some other thi
 ## Configuration
 You'll want to ensure that all teams are valid in your CI environment. We recommend running code like this in CI:
 ```ruby
-require 'teams'
-errors = ::Teams.validation_errors(::Teams.all)
+require 'code_teams'
+errors = ::CodeTeams.validation_errors(::CodeTeams.all)
 if errors.any?
   abort <<~ERROR
     Team validation failed with the following errors:
