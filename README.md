@@ -41,7 +41,9 @@ class MyGithubPlugin < CodeTeams::Plugin
     errors = T.let([], T::Array[String])
 
     teams.each do |team|
-      errors << missing_key_error_message(team, 'github.team') if self.for(team).github.team.nil?
+      if self.for(team).github.team.nil?
+        errors << missing_key_error_message(team, 'github.team')
+      end
     end
 
     errors
@@ -70,8 +72,8 @@ Your plugins can be as simple or as complex as you want. Here are some other thi
 - Identifying which teams own which feature flags
 - Mapping teams to specific portions of the code through `code_ownership`
 - Allowing teams to protect certain files and require approval on modification of certain files
-- Specifying owned dependencies (ruby gems, javascript packages, and more)
-- Specifying how to get in touch with the team via slack (their channel and handle)
+- Specifying owned dependencies (Ruby gems, JavaScript packages, and more)
+- Specifying how to get in touch with the team via Slack (their channel and handle)
 
 ## Configuration
 You'll want to ensure that all teams are valid in your CI environment. We recommend running code like this in CI:
