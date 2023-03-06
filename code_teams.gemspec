@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'code_teams'
-  spec.version       = '1.0.0'
+  spec.version       = '1.0.1'
   spec.authors       = ['Gusto Engineers']
   spec.email         = ['dev@gusto.com']
   spec.summary       = 'A low-dependency gem for declaring and querying engineering teams'
@@ -18,7 +18,7 @@ Gem::Specification.new do |spec|
           'public gem pushes.'
   end
 
-  spec.files = Dir['README.md', 'sorbet/**/*', 'lib/**/*']
+  spec.files = Dir['README.md', 'lib/**/*']
   spec.require_paths = ['lib']
   spec.required_ruby_version = '>= 2.6'
 
