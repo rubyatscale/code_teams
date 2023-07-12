@@ -61,6 +61,16 @@ module CodeTeams
       T.unsafe(registry_for_team[self])
     end
 
+    sig { void }
+    def self.bust_caches!
+      all_plugins.each(&:clear_team_registry!)
+    end
+
+    sig { void }
+    def self.clear_team_registry!
+      @registry = nil
+    end
+
     private_class_method :registry
     private_class_method :register_team
   end

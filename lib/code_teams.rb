@@ -60,6 +60,7 @@ module CodeTeams
   # The primary reason this is helpful is for clients of CodeTeams who want to test their code, and each test context has different set of teams
   sig { void }
   def self.bust_caches!
+    Plugin.bust_caches!
     @all = nil
     @index_by_name = nil
   end
