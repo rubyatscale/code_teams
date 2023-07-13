@@ -3,3 +3,4 @@
 
 # typed: strong
 module ::RSpec; end
+module ::TestPlugin; end
