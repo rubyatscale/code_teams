@@ -3,7 +3,6 @@
 # typed: strict
 
 require 'yaml'
-require 'set'
 require 'pathname'
 require 'sorbet-runtime'
 require 'code_teams/plugin'
@@ -116,16 +115,16 @@ module CodeTeams
     sig { params(other: Object).returns(T::Boolean) }
     def ==(other)
       if other.is_a?(CodeTeams::Team)
-        self.name == other.name
+        name == other.name
       else
         false
       end
     end
 
-    alias_method :eql?, :==
+    alias eql? ==
 
     sig { returns(Integer) }
-    def hash # rubocop:disable Rails/Delegate
+    def hash
       name.hash
     end
   end

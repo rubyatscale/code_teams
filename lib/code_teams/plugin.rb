@@ -28,7 +28,7 @@ module CodeTeams
     end
 
     sig { params(teams: T::Array[Team]).returns(T::Array[String]) }
-    def self.validation_errors(teams) # rubocop:disable Lint/UnusedMethodArgument
+    def self.validation_errors(teams)
       []
     end
 
