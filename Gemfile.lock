@@ -27,16 +27,16 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.10.0)
     rspec-support (3.10.2)
-    sorbet (0.5.9889)
-      sorbet-static (= 0.5.9889)
+    sorbet (0.5.11122)
+      sorbet-static (= 0.5.11122)
     sorbet-runtime (0.5.9976)
-    sorbet-static (0.5.9889-universal-darwin-20)
-    sorbet-static (0.5.9889-universal-darwin-21)
-    sorbet-static (0.5.9889-x86_64-linux)
+    sorbet-static (0.5.11122-universal-darwin)
+    sorbet-static (0.5.11122-x86_64-linux)
 
 PLATFORMS
   arm64-darwin-20
   arm64-darwin-21
+  arm64-darwin-22
   x86_64-darwin-20
   x86_64-linux
 
