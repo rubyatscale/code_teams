@@ -3,6 +3,7 @@
 # typed: strict
 
 require 'yaml'
+require 'set'
 require 'pathname'
 require 'sorbet-runtime'
 require 'code_teams/plugin'
