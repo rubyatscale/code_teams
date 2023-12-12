@@ -28,7 +28,7 @@ module CodeTeams
     end
 
     sig { params(teams: T::Array[Team]).returns(T::Array[String]) }
-    def self.validation_errors(teams) # rubocop:disable Lint/UnusedMethodArgument
+    def self.validation_errors(teams)
       []
     end
 
@@ -42,9 +42,9 @@ module CodeTeams
       "#{team.name} is missing required key `#{key}`"
     end
 
-    sig { returns(T::Hash[T.nilable(String), T::Hash[Class, Plugin]]) }
+    sig { returns(T::Hash[T.nilable(String), T::Hash[T.class_of(Plugin), Plugin]]) }
     def self.registry
-      @registry ||= T.let(@registry, T.nilable(T::Hash[String, T::Hash[Class, Plugin]]))
+      @registry ||= T.let(@registry, T.nilable(T::Hash[String, T::Hash[T.class_of(Plugin), Plugin]]))
       @registry ||= {}
       @registry
     end

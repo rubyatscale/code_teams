@@ -54,7 +54,7 @@ RSpec.describe CodeTeams do
       it 'registers the team file as invalid' do
         expect(validation_errors).to match_array(
           [
-            'More than 1 definition for My Team found',
+            'More than 1 definition for My Team found'
           ]
         )
       end
@@ -64,7 +64,7 @@ RSpec.describe CodeTeams do
   describe '==' do
     it 'handles nil correctly' do
       expect(CodeTeams.all.first == nil).to eq false # rubocop:disable Style/NilComparison
-      expect(nil == CodeTeams.all.first).to eq false
+      expect(CodeTeams.all.first.nil?).to eq false
     end
   end
 end
