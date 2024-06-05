@@ -79,7 +79,8 @@ Your plugins can be as simple or as complex as you want. Here are some other thi
 You'll want to ensure that all teams are valid in your CI environment. We recommend running code like this in CI:
 ```ruby
 require 'code_teams'
-errors = ::CodeTeams.validation_errors(::CodeTeams.all)
+
+errors = CodeTeams.validation_errors(CodeTeams.all)
 if errors.any?
   abort <<~ERROR
     Team validation failed with the following errors:
