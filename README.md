@@ -30,10 +30,7 @@ class MyGithubPlugin < CodeTeams::Plugin
   end
 
   def member?(user)
-    members = github.members
-    return false unless members
-
-    members.include?(user)
+    github.members.include?(user)
   end
 
   sig { override.params(teams: T::Array[CodeTeams::Team]).returns(T::Array[String]) }
