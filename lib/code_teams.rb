@@ -7,6 +7,7 @@ require 'pathname'
 require 'sorbet-runtime'
 require 'code_teams/plugin'
 require 'code_teams/plugins/identity'
+require 'code_teams/utils'
 
 module CodeTeams
   extend T::Sig
@@ -14,6 +15,7 @@ module CodeTeams
   class IncorrectPublicApiUsageError < StandardError; end
 
   UNKNOWN_TEAM_STRING = 'Unknown Team'
+  @plugins_registered = false
 
   sig { returns(T::Array[Team]) }
   def self.all
@@ -35,6 +37,11 @@ module CodeTeams
 
   sig { params(dir: String).returns(T::Array[Team]) }
   def self.for_directory(dir)
+    unless @plugins_registered
+      Team.register_plugins
+      @plugins_registered = true
+    end
+
     Pathname.new(dir).glob('**/*.yml').map do |path|
       Team.from_yml(path.to_s)
     rescue Psych::SyntaxError
@@ -83,6 +90,15 @@ module CodeTeams
         config_yml: nil,
         raw_hash: raw_hash
       )
+    end
+
+    sig { void }
+    def self.register_plugins
+      Plugin.all_plugins.each do |plugin|
+        define_method(plugin.root_key) do
+          plugin.for(self).public_send(plugin.root_key)
+        end
+      end
     end
 
     sig { returns(T::Hash[T.untyped, T.untyped]) }
