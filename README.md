@@ -62,7 +62,7 @@ github:
 ```ruby
 team = CodeTeams.find('My Team')
 members = team.github.members
-team_name = team.github.team
+github_name = team.github.team
 ```
 
    * Or if your accessor method name differs from your plugin's class name:
