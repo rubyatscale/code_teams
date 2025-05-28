@@ -65,21 +65,21 @@ members = team.github.members
 team_name = team.github.team
 ```
 
-    a) Or if your accessor method name differs from your plugin's class name:
+  a) Or if your accessor method name differs from your plugin's class name:
 
-    ```ruby
-    class MyPlugin < CodeTeams::Plugin
-      data_accessor_name :other_name
+  ```ruby
+  class MyPlugin < CodeTeams::Plugin
+    data_accessor_name :other_name
 
-      def other_name
-        # ...
-      end
+    def other_name
+      # ...
     end
+  end
 
-    # You can then use:
-    team.other_name
-    # similarly to the Github example above
-    ```
+  # You can then use:
+  team.other_name
+  # similarly to the Github example above
+  ```
 
 2) Running team validations (see below) will ensure all teams have a GitHub team specified
 
