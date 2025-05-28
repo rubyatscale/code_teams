@@ -31,7 +31,12 @@ RSpec.describe CodeTeams::Plugin do
     end
 
     it 'can be overridden by a subclass' do
-      skip 'TODO: implement'
+      test_plugin_class = Class.new(described_class) do
+        root_key 'foo'
+      end
+      stub_const('TestPlugin', test_plugin_class)
+
+      expect(TestPlugin.root_key).to eq('foo')
     end
   end
 end

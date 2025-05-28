@@ -10,14 +10,19 @@ module CodeTeams
 
     abstract!
 
-    sig { returns(String) }
-    def self.root_key
-      Utils.underscore(Utils.demodulize(name))
-    end
-
     sig { params(team: Team).void }
     def initialize(team)
       @team = team
+    end
+
+    sig { params(key: String).returns(String) }
+    def self.root_key(key = default_root_key)
+      @root_key ||= key
+    end
+
+    sig { returns(String) }
+    def self.default_root_key
+      Utils.underscore(Utils.demodulize(name))
     end
 
     sig { params(base: T.untyped).void }
