@@ -7,7 +7,6 @@ require 'pathname'
 require 'sorbet-runtime'
 require 'code_teams/plugin'
 require 'code_teams/plugins/identity'
-require 'code_teams/utils'
 
 module CodeTeams
   extend T::Sig
