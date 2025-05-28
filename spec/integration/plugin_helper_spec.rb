@@ -4,6 +4,8 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
     write_team_yml(extra_data: { foo: 'foo', bar: 'bar' })
   end
 
+  let(:team) { CodeTeams.find('My Team') }
+
   describe 'helper methods' do
     context 'with a single implicit method' do
       before do
@@ -18,15 +20,12 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
       end
 
       it 'adds a helper method to the team' do
-        team = CodeTeams.find('My Team')
-
         expect(team.test_plugin.foo).to eq('foo')
         expect(team.test_plugin.bar).to eq('bar')
       end
 
       it 'supports nested data' do
         write_team_yml(extra_data: { foo: { bar: 'bar' } })
-        team = CodeTeams.find('My Team')
         expect(team.test_plugin.foo['bar']).to eq('bar')
       end
 
@@ -44,8 +43,6 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
         end
 
         it 'adds the data accessor name to the team' do
-          team = CodeTeams.find('My Team')
-
           expect(team.foo.bar).to eq('bar')
         end
       end
@@ -72,8 +69,6 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
 
       it 'adds the other methods to the team' do
         skip 'TODO: cannot support in this version'
-        team = CodeTeams.find('My Team')
-
         expect(team.test_plugin.foo).to eq('foo')
         expect(team.test_plugin.other_method1).to eq('other1')
         expect(team.test_plugin.other_method2).to eq('other2')
