@@ -29,5 +29,9 @@ RSpec.describe CodeTeams::Plugin do
 
       expect(FooNamespace::TestPlugin.root_key).to eq('test_plugin')
     end
+
+    it 'can be overridden by a subclass' do
+      skip 'TODO: implement'
+    end
   end
 end
