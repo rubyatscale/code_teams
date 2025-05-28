@@ -22,13 +22,17 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
   end
 
   describe 'helper methods' do
+    let(:team) { CodeTeams.find('My Team') }
+
     it 'adds a helper method to the team' do
       write_team_yml(extra_data: { foo: 'foo', bar: 'bar' })
-
-      team = CodeTeams.find('My Team')
-
       expect(team.test_plugin.foo).to eq('foo')
       expect(team.test_plugin.bar).to eq('bar')
+    end
+
+    it 'supports nested data' do
+      write_team_yml(extra_data: { foo: { bar: 'bar' } })
+      expect(team.test_plugin.foo['bar']).to eq('bar')
     end
   end
 end
