@@ -29,6 +29,26 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
         team = CodeTeams.find('My Team')
         expect(team.test_plugin.foo['bar']).to eq('bar')
       end
+
+      context 'when the data accessor name is overridden' do
+        before do
+          test_plugin_class = Class.new(described_class) do
+            data_accessor_name 'foo'
+
+            def foo
+              Data.define(:bar).new('bar')
+            end
+          end
+
+          stub_const('TestPlugin', test_plugin_class)
+        end
+
+        it 'adds the data accessor name to the team' do
+          team = CodeTeams.find('My Team')
+
+          expect(team.foo.bar).to eq('bar')
+        end
+      end
     end
 
     context 'with other public methods' do
