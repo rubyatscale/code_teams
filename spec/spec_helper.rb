@@ -2,6 +2,8 @@ require 'bundler/setup'
 require 'pry'
 require 'code_teams'
 
+Dir[File.expand_path('support/**/*.rb', __dir__)].sort.each { |f| require f }
+
 RSpec.configure do |config|
   # Enable flags like --only-failures and --next-failure
   config.example_status_persistence_file_path = '.rspec_status'
@@ -22,10 +24,4 @@ RSpec.configure do |config|
   ensure
     FileUtils.rm_rf(tmpdir)
   end
-end
-
-def write_file(path, content = '')
-  pathname = Pathname.new(path)
-  FileUtils.mkdir_p(pathname.dirname)
-  pathname.write(content)
 end

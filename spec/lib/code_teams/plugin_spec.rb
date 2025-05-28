@@ -1,11 +1,4 @@
 RSpec.describe CodeTeams::Plugin do
-  def write_team_yml(extra_data: false)
-    write_file('config/teams/my_team.yml', <<~YML.strip)
-      name: My Team
-      extra_data: #{extra_data}
-    YML
-  end
-
   before do
     CodeTeams.bust_caches!
 
