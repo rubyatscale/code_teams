@@ -61,8 +61,26 @@ github:
 1) You can now use the following API to get GitHub information about that team:
 ```ruby
 team = CodeTeams.find('My Team')
-MyGithubPlugin.for(team).github
+members = team.github.members
+team_name = team.github.team
 ```
+
+1a) Or if your accessor method name differs from your plugin's class name:
+
+```ruby
+class MyPlugin < CodeTeams::Plugin
+  data_accessor_name :other_name
+
+  def other_name
+    # ...
+  end
+end
+
+# You can then use:
+team.other_name
+# similarly to the Github example above
+```
+
 2) Running team validations (see below) will ensure all teams have a GitHub team specified
 
 Your plugins can be as simple or as complex as you want. Here are some other things we use plugins for:
