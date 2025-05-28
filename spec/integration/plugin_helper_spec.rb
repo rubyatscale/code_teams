@@ -75,4 +75,16 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
       end
     end
   end
+
+  specify 'backwards compatibility' do
+    test_plugin_class = Class.new(described_class) do
+      def test_plugin
+        Data.define(:foo).new('foo')
+      end
+    end
+
+    stub_const('TestPlugin', test_plugin_class)
+
+    expect(TestPlugin.for(team).test_plugin.foo).to eq('foo')
+  end
 end
