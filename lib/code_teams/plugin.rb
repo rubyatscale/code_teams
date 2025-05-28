@@ -16,12 +16,12 @@ module CodeTeams
     end
 
     sig { params(key: String).returns(String) }
-    def self.root_key(key = default_root_key)
-      @root_key ||= key
+    def self.data_accessor_name(key = default_data_accessor_name)
+      @data_accessor_name ||= key
     end
 
     sig { returns(String) }
-    def self.default_root_key
+    def self.default_data_accessor_name
       Utils.underscore(Utils.demodulize(name))
     end
 

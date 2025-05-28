@@ -96,8 +96,8 @@ module CodeTeams
     sig { void }
     def self.register_plugins
       Plugin.all_plugins.each do |plugin|
-        define_method(plugin.root_key) do
-          plugin.for(self).public_send(plugin.root_key)
+        define_method(plugin.data_accessor_name) do
+          plugin.for(self).public_send(plugin.data_accessor_name)
         end
       end
     end

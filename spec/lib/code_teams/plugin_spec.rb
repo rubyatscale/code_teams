@@ -22,21 +22,21 @@ RSpec.describe CodeTeams::Plugin do
     end
   end
 
-  describe '.root_key' do
+  describe '.data_accessor_name' do
     it 'returns the underscore version of the plugin name' do
       test_plugin_class = Class.new(described_class)
       stub_const('FooNamespace::TestPlugin', test_plugin_class)
 
-      expect(FooNamespace::TestPlugin.root_key).to eq('test_plugin')
+      expect(FooNamespace::TestPlugin.data_accessor_name).to eq('test_plugin')
     end
 
     it 'can be overridden by a subclass' do
       test_plugin_class = Class.new(described_class) do
-        root_key 'foo'
+        data_accessor_name 'foo'
       end
       stub_const('TestPlugin', test_plugin_class)
 
-      expect(TestPlugin.root_key).to eq('foo')
+      expect(TestPlugin.data_accessor_name).to eq('foo')
     end
   end
 end
