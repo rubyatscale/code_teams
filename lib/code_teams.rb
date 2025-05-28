@@ -96,11 +96,8 @@ module CodeTeams
     sig { void }
     def self.register_plugins
       Plugin.all_plugins.each do |plugin|
-        # All public instance methods only defined in the plugin class
-        plugin.instance_methods(false).each do |method|
-          define_method(method) do
-            plugin.for(self).public_send(method)
-          end
+        define_method(plugin.root_key) do
+          plugin.for(self).public_send(plugin.root_key)
         end
       end
     end
