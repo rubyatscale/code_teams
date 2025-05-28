@@ -10,6 +10,10 @@ module CodeTeams
 
     abstract!
 
+    def self.root_key
+      Utils.underscore(name.split('::').last)
+    end
+
     sig { params(team: Team).void }
     def initialize(team)
       @team = team
