@@ -12,7 +12,7 @@ module CodeTeams
 
     sig { returns(String) }
     def self.root_key
-      Utils.underscore(name.split('::').last)
+      Utils.underscore(Utils.demodulize(name))
     end
 
     sig { params(team: Team).void }

@@ -21,4 +21,13 @@ RSpec.describe CodeTeams::Plugin do
       expect(TestPlugin.for(team).extra_data).to be(false)
     end
   end
+
+  describe '.root_key' do
+    it 'returns the underscore version of the plugin name' do
+      test_plugin_class = Class.new(described_class)
+      stub_const('FooNamespace::TestPlugin', test_plugin_class)
+
+      expect(FooNamespace::TestPlugin.root_key).to eq('test_plugin')
+    end
+  end
 end

@@ -7,5 +7,9 @@ module CodeTeams
         .tr('-', '_')
         .downcase
     end
+
+    def self.demodulize(string)
+      string.split('::').last
+    end
   end
 end
