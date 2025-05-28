@@ -81,7 +81,10 @@ team_name = team.github.team
    # similarly to the Github example above
    ```
 
-1) Running team validations (see below) will ensure all teams have a GitHub team specified
+   However, to avoid confusion, it's recommended to use the naming convention 
+   whenever possible so that your accessor name matches your plugin's name
+
+2) Running team validations (see below) will ensure all teams have a GitHub team specified
 
 Your plugins can be as simple or as complex as you want. Here are some other things we use plugins for:
 - Identifying which teams own which feature flags
