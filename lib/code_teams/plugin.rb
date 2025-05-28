@@ -10,6 +10,7 @@ module CodeTeams
 
     abstract!
 
+    sig { returns(String) }
     def self.root_key
       Utils.underscore(name.split('::').last)
     end
