@@ -59,26 +59,29 @@ github:
 ```
 
 1) You can now use the following API to get GitHub information about that team:
-```ruby
-team = CodeTeams.find('My Team')
-members = team.github.members
-github_name = team.github.team
-```
 
-   * Or if your accessor method name differs from your plugin's class name:
+  ```ruby
+  team = CodeTeams.find('My Team')
+  members = team.github.members
+  github_name = team.github.team
+  ```
 
-   ```ruby
-   class MyPlugin < CodeTeams::Plugin
-     data_accessor_name :other_name
+  Alternatively, you can assign an accessor method name that differs from the plugin's class name:
 
-     def other_name
-       # ...
-     end
-   end
+  ```ruby
+  class MyPlugin < CodeTeams::Plugin
+    data_accessor_name :other_name
+
+    def other_name
+      # ...
+    end
+  end
 
    # You can then use:
    team.other_name
    # similarly to the Github example above
+   # You can then access data in the following manner:
+   team.other_name.attribute_name
    ```
 
    However, to avoid confusion, it's recommended to use the naming convention 
