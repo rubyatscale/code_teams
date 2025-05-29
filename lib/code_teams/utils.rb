@@ -1,6 +1,6 @@
 module CodeTeams
   module Utils
-    extend self
+    module_function
 
     def underscore(string)
       string.gsub('::', '/')
