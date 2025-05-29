@@ -48,32 +48,6 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
       end
     end
 
-    context 'with other public methods' do
-      before do
-        test_plugin_class = Class.new(described_class) do
-          def test_plugin
-            Data.define(:foo).new('foo')
-          end
-
-          def other_method1
-            'other1'
-          end
-
-          def other_method2
-            'other2'
-          end
-        end
-
-        stub_const('TestPlugin', test_plugin_class)
-      end
-
-      it 'adds the other methods to the team' do
-        skip 'TODO: cannot support in this version'
-        expect(team.test_plugin.foo).to eq('foo')
-        expect(team.test_plugin.other_method1).to eq('other1')
-        expect(team.test_plugin.other_method2).to eq('other2')
-      end
-    end
   end
 
   specify 'backwards compatibility' do
