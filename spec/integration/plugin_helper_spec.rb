@@ -47,7 +47,6 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
         end
       end
     end
-
   end
 
   specify 'backwards compatibility' do
