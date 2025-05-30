@@ -22,6 +22,7 @@ module CodeTeams
 
     sig { returns(String) }
     def self.default_data_accessor_name
+      # e.g., MyNamespace::MyPlugin -> my_plugin
       Utils.underscore(Utils.demodulize(name))
     end
 
