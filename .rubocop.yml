@@ -110,6 +110,9 @@ Layout/MultilineMethodCallIndentation:
 Style/BlockDelimiters:
   Enabled: false
 
+Style/StringLiterals:
+  Enabled: false
+
 # Sometimes we like methods like `get_packages`
 Naming/AccessorMethodName:
   Enabled: false
