@@ -97,6 +97,7 @@ module CodeTeams
     def self.register_plugins
       Plugin.all_plugins.each do |plugin|
         define_method(plugin.data_accessor_name) do
+          # e.g., MyGithubPlugin.for(team).github
           plugin.for(self).public_send(plugin.data_accessor_name)
         end
       end
