@@ -1,7 +1,7 @@
 RSpec.describe CodeTeams::Plugin, 'helper integration' do
   before do
     CodeTeams.bust_caches!
-    write_team_yml(extra_data: { foo: 'foo', bar: 'bar' })
+    write_team_yml(extra_data: { 'foo' => 'foo', 'bar' => 'bar' })
   end
 
   let(:team) { CodeTeams.find('My Team') }
@@ -25,7 +25,7 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
       end
 
       it 'supports nested data' do
-        write_team_yml(extra_data: { foo: { bar: 'bar' } })
+        write_team_yml(extra_data: { 'foo' => { 'bar' => 'bar' } })
         expect(team.test_plugin.foo['bar']).to eq('bar')
       end
 

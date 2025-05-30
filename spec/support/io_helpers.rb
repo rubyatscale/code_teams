@@ -1,9 +1,9 @@
 module IOHelpers
   def write_team_yml(extra_data: false)
-    write_file('config/teams/my_team.yml', <<~YML.strip)
-      name: My Team
-      extra_data: #{extra_data}
-    YML
+    write_file('config/teams/my_team.yml', YAML.dump({
+      name: 'My Team',
+      extra_data: extra_data
+    }.transform_keys(&:to_s)))
   end
 
   def write_file(path, content = '')
