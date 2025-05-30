@@ -15,7 +15,7 @@ module CodeTeams
   class IncorrectPublicApiUsageError < StandardError; end
 
   UNKNOWN_TEAM_STRING = 'Unknown Team'
-  @plugins_registered = false
+  @plugins_registered = T.let(false, T::Boolean)
 
   sig { returns(T::Array[Team]) }
   def self.all
@@ -99,7 +99,7 @@ module CodeTeams
         # e.g., def github (on Team)
         define_method(plugin.data_accessor_name) do
           # e.g., MyGithubPlugin.for(team).github
-          plugin.for(self).public_send(plugin.data_accessor_name)
+          plugin.for(T.cast(self, Team)).public_send(plugin.data_accessor_name)
         end
       end
     end

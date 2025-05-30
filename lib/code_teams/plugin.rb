@@ -10,6 +10,8 @@ module CodeTeams
 
     abstract!
 
+    @data_accessor_name = T.let(nil, T.nilable(String))
+
     sig { params(team: Team).void }
     def initialize(team)
       @team = team
