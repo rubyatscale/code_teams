@@ -4,3 +4,4 @@
 # typed: strong
 module ::RSpec; end
 module ::TestPlugin; end
+module TestNamespace::TestPlugin; end

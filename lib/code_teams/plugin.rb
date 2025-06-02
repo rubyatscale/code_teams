@@ -10,9 +10,22 @@ module CodeTeams
 
     abstract!
 
+    @data_accessor_name = T.let(nil, T.nilable(String))
+
     sig { params(team: Team).void }
     def initialize(team)
       @team = team
+    end
+
+    sig { params(key: String).returns(String) }
+    def self.data_accessor_name(key = default_data_accessor_name)
+      @data_accessor_name ||= key
+    end
+
+    sig { returns(String) }
+    def self.default_data_accessor_name
+      # e.g., MyNamespace::MyPlugin -> my_plugin
+      Utils.underscore(Utils.demodulize(name))
     end
 
     sig { params(base: T.untyped).void }

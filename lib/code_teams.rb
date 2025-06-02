@@ -7,6 +7,7 @@ require 'pathname'
 require 'sorbet-runtime'
 require 'code_teams/plugin'
 require 'code_teams/plugins/identity'
+require 'code_teams/utils'
 
 module CodeTeams
   extend T::Sig
@@ -14,6 +15,7 @@ module CodeTeams
   class IncorrectPublicApiUsageError < StandardError; end
 
   UNKNOWN_TEAM_STRING = 'Unknown Team'
+  @plugins_registered = T.let(false, T::Boolean)
 
   sig { returns(T::Array[Team]) }
   def self.all
@@ -35,6 +37,11 @@ module CodeTeams
 
   sig { params(dir: String).returns(T::Array[Team]) }
   def self.for_directory(dir)
+    unless @plugins_registered
+      Team.register_plugins
+      @plugins_registered = true
+    end
+
     Pathname.new(dir).glob('**/*.yml').map do |path|
       Team.from_yml(path.to_s)
     rescue Psych::SyntaxError
@@ -59,6 +66,7 @@ module CodeTeams
   # The primary reason this is helpful is for clients of CodeTeams who want to test their code, and each test context has different set of teams
   sig { void }
   def self.bust_caches!
+    @plugins_registered = false
     Plugin.bust_caches!
     @all = nil
     @index_by_name = nil
@@ -83,6 +91,17 @@ module CodeTeams
         config_yml: nil,
         raw_hash: raw_hash
       )
+    end
+
+    sig { void }
+    def self.register_plugins
+      Plugin.all_plugins.each do |plugin|
+        # e.g., def github (on Team)
+        define_method(plugin.data_accessor_name) do
+          # e.g., MyGithubPlugin.for(team).github
+          plugin.for(T.cast(self, Team)).public_send(plugin.data_accessor_name)
+        end
+      end
     end
 
     sig { returns(T::Hash[T.untyped, T.untyped]) }
