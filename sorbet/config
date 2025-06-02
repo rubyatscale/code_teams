@@ -1,3 +1,7 @@
 --dir
 .
 --ignore=/vendor/bundle
+--cache-dir=tmp/cache/sorbet
+--ignore=tmp/
+--ignore=vendor/
+--ignore=spec/
