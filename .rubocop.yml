@@ -8,11 +8,21 @@
 # where the inspected file is and continue its way up to the root directory.
 #
 # See https://docs.rubocop.org/rubocop/configuration
+
+plugins:
+  - rubocop-rake
+  - rubocop-rspec
+
 AllCops:
   NewCops: enable
   Exclude:
     - vendor/bundle/**/**
-  TargetRubyVersion: 2.6
+    - bin/**
+  TargetRubyVersion: 3.2
+
+Gemspec/DevelopmentDependencies:
+  Enabled: true
+  EnforcedStyle: Gemfile
 
 Metrics/ParameterLists:
   Enabled: false
@@ -118,6 +128,11 @@ Style/AccessorGrouping:
 Style/HashSyntax:
   Enabled: false
 
-Gemspec/DevelopmentDependencies:
-  Enabled: true
-  EnforcedStyle: gemspec
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false
