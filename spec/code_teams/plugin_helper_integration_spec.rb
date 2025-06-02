@@ -1,4 +1,4 @@
-RSpec.describe CodeTeams::Plugin, 'helper integration' do
+RSpec.describe CodeTeams::Plugin do
   before do
     CodeTeams.bust_caches!
     write_team_yml(extra_data: { 'foo' => 'foo', 'bar' => 'bar' })
@@ -28,23 +28,23 @@ RSpec.describe CodeTeams::Plugin, 'helper integration' do
         write_team_yml(extra_data: { 'foo' => { 'bar' => 'bar' } })
         expect(team.test_plugin.foo['bar']).to eq('bar')
       end
+    end
 
-      context 'when the data accessor name is overridden' do
-        before do
-          test_plugin_class = Class.new(described_class) do
-            data_accessor_name 'foo'
+    context 'when the data accessor name is overridden' do
+      before do
+        test_plugin_class = Class.new(described_class) do
+          data_accessor_name 'foo'
 
-            def foo
-              Data.define(:bar).new('bar')
-            end
+          def foo
+            Data.define(:bar).new('bar')
           end
-
-          stub_const('TestPlugin', test_plugin_class)
         end
 
-        it 'adds the data accessor name to the team' do
-          expect(team.foo.bar).to eq('bar')
-        end
+        stub_const('TestPlugin', test_plugin_class)
+      end
+
+      it 'adds the data accessor name to the team' do
+        expect(team.foo.bar).to eq('bar')
       end
     end
   end
