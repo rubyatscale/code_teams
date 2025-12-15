@@ -13,26 +13,25 @@ module CodeTeams
   extend T::Sig
 
   class IncorrectPublicApiUsageError < StandardError; end
+  class TeamNotFoundError < StandardError; end
 
   UNKNOWN_TEAM_STRING = 'Unknown Team'
   @plugins_registered = T.let(false, T::Boolean)
 
   sig { returns(T::Array[Team]) }
   def self.all
-    @all = T.let(@all, T.nilable(T::Array[Team]))
-    @all ||= for_directory('config/teams')
+    @all ||= T.let(for_directory('config/teams'), T.nilable(T::Array[Team]))
   end
 
   sig { params(name: String).returns(T.nilable(Team)) }
   def self.find(name)
-    @index_by_name = T.let(@index_by_name, T.nilable(T::Hash[String, CodeTeams::Team]))
-    @index_by_name ||= begin
-      result = {}
-      all.each { |t| result[t.name] = t }
-      result
-    end
-
+    @index_by_name ||= T.let(all.to_h { |t| [t.name, t] }, T.nilable(T::Hash[String, CodeTeams::Team]))
     @index_by_name[name]
+  end
+
+  sig { params(name: String).returns(Team) }
+  def self.find!(name)
+    find(name) || raise(TeamNotFoundError, "No team found with name: #{name}")
   end
 
   sig { params(dir: String).returns(T::Array[Team]) }
