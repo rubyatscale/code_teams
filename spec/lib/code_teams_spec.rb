@@ -37,6 +37,34 @@ RSpec.describe CodeTeams do
     end
   end
 
+  describe '.find' do
+    it 'returns the team when found' do
+      team = described_class.find('My Team')
+      expect(team).to be_a(CodeTeams::Team)
+      expect(team.name).to eq('My Team')
+    end
+
+    it 'returns nil when the team is not found' do
+      team = described_class.find('Nonexistent Team')
+      expect(team).to be_nil
+    end
+  end
+
+  describe '.find!' do
+    it 'returns the team when found' do
+      team = described_class.find!('My Team')
+      expect(team).to be_a(CodeTeams::Team)
+      expect(team.name).to eq('My Team')
+    end
+
+    it 'raises TeamNotFoundError when the team is not found' do
+      expect { described_class.find!('Nonexistent Team') }.to raise_error(
+        CodeTeams::TeamNotFoundError,
+        'No team found with name: Nonexistent Team'
+      )
+    end
+  end
+
   describe 'validation_errors' do
     subject(:validation_errors) { described_class.validation_errors(described_class.all) }
 
