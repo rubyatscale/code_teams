@@ -40,14 +40,14 @@ module CodeTeams
       end
     end
 
-    sig { params(attributes: T::Hash[T.untyped, T.untyped]).returns(CodeTeams::Team) }
+    sig { params(attributes: T::Hash[Symbol, T.untyped]).returns(CodeTeams::Team) }
     def self.create_code_team(attributes)
       attributes = attributes.dup
       attributes[:name] ||= "Fake Team #{SecureRandom.hex(4)}"
 
       code_team = CodeTeams::Team.new(
         config_yml: 'tmp/fake_config.yml',
-        raw_hash: T.cast(Utils.deep_stringify_keys(attributes), T::Hash[T.untyped, T.untyped])
+        raw_hash: Utils.deep_stringify_keys(attributes)
       )
 
       code_teams << code_team
