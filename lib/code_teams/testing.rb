@@ -4,6 +4,7 @@
 
 require 'securerandom'
 require 'code_teams'
+require 'code_teams/rspec'
 
 module CodeTeams
   # Utilities for tests that need a controlled set of teams without writing YML
@@ -26,7 +27,7 @@ module CodeTeams
       return unless defined?(RSpec)
 
       T.unsafe(RSpec).configure do |config|
-        config.include CodeTeams::RSpecHelpers if defined?(CodeTeams::RSpecHelpers)
+        config.include CodeTeams::RSpecHelpers
 
         config.around do |example|
           example.run

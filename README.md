@@ -116,7 +116,7 @@ end
 `code_teams` provides test helpers for creating temporary teams in your specs without writing YML files to disk. Add the following to your `spec_helper.rb` (or `rails_helper.rb`):
 
 ```ruby
-require 'code_teams/rspec'
+require 'code_teams/testing'
 
 CodeTeams::Testing.enable!
 ```

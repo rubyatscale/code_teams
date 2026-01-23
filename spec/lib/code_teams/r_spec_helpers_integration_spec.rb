@@ -1,4 +1,4 @@
-require 'code_teams/rspec'
+require 'code_teams/testing'
 
 CodeTeams::Testing.enable!
 
