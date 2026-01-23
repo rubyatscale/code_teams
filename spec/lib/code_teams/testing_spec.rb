@@ -1,5 +1,7 @@
 require 'code_teams/testing'
 
+CodeTeams::Testing.enable!
+
 RSpec.describe CodeTeams::Testing do
   before do
     CodeTeams.bust_caches!
