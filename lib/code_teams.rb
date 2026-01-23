@@ -85,7 +85,7 @@ module CodeTeams
       )
     end
 
-    sig { params(raw_hash: T::Hash[T.untyped, T.untyped]).returns(Team) }
+    sig { params(raw_hash: T::Hash[String, T.untyped]).returns(Team) }
     def self.from_hash(raw_hash)
       new(
         config_yml: nil,
@@ -104,7 +104,7 @@ module CodeTeams
       end
     end
 
-    sig { returns(T::Hash[T.untyped, T.untyped]) }
+    sig { returns(T::Hash[String, T.untyped]) }
     attr_reader :raw_hash
 
     sig { returns(T.nilable(String)) }
@@ -113,7 +113,7 @@ module CodeTeams
     sig do
       params(
         config_yml: T.nilable(String),
-        raw_hash: T::Hash[T.untyped, T.untyped]
+        raw_hash: T::Hash[String, T.untyped]
       ).void
     end
     def initialize(config_yml:, raw_hash:)
