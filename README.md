@@ -130,7 +130,7 @@ Example usage in a spec:
 ```ruby
 RSpec.describe 'my feature' do
   it 'works with a team' do
-    team = code_team_with_config(name: 'Test Team', github: { team: '@org/test' })
+    team = code_team_with_config(name: 'Test Team')
 
     expect(CodeTeams.find('Test Team')).to eq(team)
   end
