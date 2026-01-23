@@ -13,5 +13,18 @@ module CodeTeams
     def demodulize(string)
       string.split('::').last
     end
+
+    def deep_stringify_keys(value)
+      case value
+      when Hash
+        value.each_with_object({}) do |(k, v), acc|
+          acc[k.to_s] = deep_stringify_keys(v)
+        end
+      when Array
+        value.map { |v| deep_stringify_keys(v) }
+      else
+        value
+      end
+    end
   end
 end

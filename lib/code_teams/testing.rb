@@ -47,7 +47,7 @@ module CodeTeams
 
       code_team = CodeTeams::Team.new(
         config_yml: 'tmp/fake_config.yml',
-        raw_hash: T.cast(deep_stringify_keys(attributes), T::Hash[T.untyped, T.untyped])
+        raw_hash: T.cast(Utils.deep_stringify_keys(attributes), T::Hash[T.untyped, T.untyped])
       )
 
       code_teams << code_team
@@ -67,21 +67,6 @@ module CodeTeams
     def self.reset!
       Thread.current[THREAD_KEY] = []
     end
-
-    sig { params(value: T.untyped).returns(T.untyped) }
-    def self.deep_stringify_keys(value)
-      case value
-      when Hash
-        value.each_with_object({}) do |(k, v), acc|
-          acc[k.to_s] = deep_stringify_keys(v)
-        end
-      when Array
-        value.map { |v| deep_stringify_keys(v) }
-      else
-        value
-      end
-    end
-    private_class_method :deep_stringify_keys
 
     module CodeTeamsExtension
       extend T::Sig
