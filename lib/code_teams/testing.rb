@@ -22,6 +22,21 @@ module CodeTeams
 
       CodeTeams.prepend(CodeTeamsExtension)
       @enabled = true
+
+      return unless defined?(RSpec)
+
+      T.unsafe(RSpec).configure do |config|
+        config.include CodeTeams::RSpecHelpers if defined?(CodeTeams::RSpecHelpers)
+
+        config.around do |example|
+          example.run
+          # Bust caches because plugins may hang onto stale data between examples.
+          if CodeTeams::Testing.code_teams.any?
+            CodeTeams.bust_caches!
+            CodeTeams::Testing.reset!
+          end
+        end
+      end
     end
 
     sig { params(attributes: T::Hash[T.untyped, T.untyped]).returns(CodeTeams::Team) }
