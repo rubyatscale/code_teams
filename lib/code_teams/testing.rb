@@ -14,6 +14,15 @@ module CodeTeams
     extend T::Sig
 
     THREAD_KEY = T.let(:__code_teams_collection, Symbol)
+    @enabled = T.let(false, T::Boolean)
+
+    sig { void }
+    def self.enable!
+      return if @enabled
+
+      CodeTeams.prepend(CodeTeamsExtension)
+      @enabled = true
+    end
 
     sig { params(attributes: T::Hash[T.untyped, T.untyped]).returns(CodeTeams::Team) }
     def self.create_code_team(attributes)
@@ -82,5 +91,3 @@ module CodeTeams
     end
   end
 end
-
-CodeTeams.prepend(CodeTeams::Testing::CodeTeamsExtension)

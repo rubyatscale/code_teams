@@ -5,6 +5,8 @@
 require 'securerandom'
 require 'code_teams/testing'
 
+CodeTeams::Testing.enable!
+
 module CodeTeams
   module RSpecHelpers
     def code_team_with_config(team_config = {})
@@ -17,8 +19,6 @@ end
 
 if defined?(RSpec)
   RSpec.configure do |config|
-    config.include CodeTeams::RSpecHelpers
-
     config.around do |example|
       example.run
       # Bust caches because plugins may hang onto stale data between examples.
