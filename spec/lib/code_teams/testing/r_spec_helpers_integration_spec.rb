@@ -2,7 +2,7 @@ require 'code_teams/testing'
 
 CodeTeams::Testing.enable!
 
-RSpec.describe CodeTeams::RSpecHelpers do
+RSpec.describe CodeTeams::Testing::RSpecHelpers do
   it 'exposes code_team_with_config and makes the team discoverable' do
     code_team_with_config(name: 'RSpec Team')
 
