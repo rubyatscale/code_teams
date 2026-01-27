@@ -111,6 +111,32 @@ if errors.any?
 end
 ```
 
+## Testing
+
+`code_teams` provides test helpers for creating temporary teams in your specs without writing YML files to disk. Add the following to your `spec_helper.rb` (or `rails_helper.rb`):
+
+```ruby
+require 'code_teams/testing'
+
+CodeTeams::Testing.enable!
+```
+
+This gives you:
+- A `code_team_with_config` helper method available in all specs
+- Automatic cleanup of testing teams between examples
+
+Example usage in a spec:
+
+```ruby
+RSpec.describe 'my feature' do
+  it 'works with a team' do
+    team = code_team_with_config(name: 'Test Team')
+
+    expect(CodeTeams.find('Test Team')).to eq(team)
+  end
+end
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome!
