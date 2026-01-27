@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = 'code_teams'
-  spec.version       = '1.2.0'
+  spec.version       = '1.3.0'
   spec.authors       = ['Gusto Engineers']
   spec.email         = ['dev@gusto.com']
   spec.summary       = 'A low-dependency gem for declaring and querying engineering teams'
