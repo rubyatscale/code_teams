@@ -1,5 +1,3 @@
-# AGENTS.md
-
 This file provides guidance to AI coding agents when working with code in this repository.
 
 ## What this project is
@@ -29,4 +27,4 @@ bundle exec srb tc
 
 - `lib/code_teams.rb` — public API: `CodeTeams.all`, `CodeTeams.find`, team plugin registration
 - `lib/code_teams/` — `Team` struct, YAML parsing, plugin interface, and built-in plugins
-- `spec/` — RSpec tests; `spec/fixtures/` holds sample `config/teams/` directories
+- `spec/` — RSpec tests
