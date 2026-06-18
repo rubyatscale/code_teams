@@ -36,7 +36,7 @@ GEM
     rbs (3.9.4)
       logger
     regexp_parser (2.10.0)
-    rexml (3.4.1)
+    rexml (3.4.4)
     rspec (3.13.1)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -100,7 +100,7 @@ GEM
     unicode-display_width (3.1.4)
       unicode-emoji (~> 4.0, >= 4.0.4)
     unicode-emoji (4.2.0)
-    yard (0.9.37)
+    yard (0.9.44)
     yard-sorbet (0.9.0)
       sorbet-runtime
       yard
