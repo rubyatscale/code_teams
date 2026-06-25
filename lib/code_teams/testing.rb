@@ -71,7 +71,7 @@ module CodeTeams
     module CodeTeamsExtension
       extend T::Sig
 
-      sig { params(base: Module).void }
+      sig { params(base: T::Module[T.anything]).void }
       def self.prepended(base)
         base.singleton_class.prepend(ClassMethods)
       end

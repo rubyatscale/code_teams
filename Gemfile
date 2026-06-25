@@ -5,7 +5,7 @@ gemspec
 
 gem 'pry'
 gem 'rake'
-gem 'rspec', '~> 3.0'
+gem 'rspec', '~> 3.13'
 gem 'rubocop'
 gem 'rubocop-rake'
 gem 'rubocop-rspec'
