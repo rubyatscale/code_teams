@@ -18,7 +18,7 @@ AllCops:
   Exclude:
     - vendor/bundle/**/**
     - bin/**
-  TargetRubyVersion: 3.2
+  TargetRubyVersion: 3.3
 
 Gemspec/DevelopmentDependencies:
   Enabled: true
