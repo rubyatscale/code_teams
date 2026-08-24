@@ -51,6 +51,11 @@ module CodeTeams
       )
 
       code_teams << code_team
+      # Plugin's registry is keyed by team name, and the hook above only busts it after an
+      # example that built a fake team. An example reading only real teams therefore leaves
+      # real-team plugin instances behind, and a fake team sharing a real team's name would
+      # inherit that cached data. Drop the registry so the fake registers first.
+      Plugin.bust_caches!
       code_team
     end
 
