@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Gem::Specification.new do |spec|
   spec.name          = 'code_teams'
   spec.version       = '1.3.1'

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module TestNamespace; end
 
 RSpec.describe CodeTeams::Plugin do

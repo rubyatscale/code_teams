@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe CodeTeams do
   let(:team_yml) do
     <<~YML.strip
