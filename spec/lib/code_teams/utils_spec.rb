@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.describe CodeTeams::Utils do
   describe '.underscore' do
     # These cases pin the exact behavior of the acronym-splitting step so that the

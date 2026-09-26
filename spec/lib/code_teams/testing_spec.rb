@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'code_teams/testing'
 
 CodeTeams::Testing.enable!

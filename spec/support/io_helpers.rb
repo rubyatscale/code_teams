@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module IOHelpers
   def write_team_yml(extra_data: false)
     write_file('config/teams/my_team.yml', YAML.dump({
